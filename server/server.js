@@ -16,17 +16,10 @@ const app = express();
 // 
 
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (server-to-server, mobile, CRA proxy)
-    if (!origin) return callback(null, true);
-    const allowed = [
-      process.env.CLIENT_URL || 'http://localhost:5173',
-      
-    ];
-    if (allowed.includes(origin)) return callback(null, true);
-    callback(new Error('Not allowed by CORS'));
-  },
+  origin: "https://habit-goal-tracker.netlify.app",
   credentials: true,
+  methods: ["GET","POST","PUT","DELETE","OPTIONS"],
+  allowedHeaders: ["Content-Type","Authorization"]
 }));
 
 app.use(express.json());
