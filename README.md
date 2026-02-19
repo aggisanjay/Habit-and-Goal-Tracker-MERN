@@ -46,6 +46,41 @@
 
 ---
 
+
+## 🖥️ Screenshots
+
+<table>
+  <tr>
+    <td align="center"><b>Dashboard</b></td>
+    <td align="center"><b>Habits</b></td>
+  </tr>
+  <tr>
+    <td><img width="420" alt="image" src="https://github.com/user-attachments/assets/945a324d-848b-44fc-85b1-d11bd37bce72" /></td>
+    <td><img width="420"  alt="image" src="https://github.com/user-attachments/assets/c8b692bb-30ff-46a6-a63b-b0c2ae955940" /></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Goals</b></td>
+    <td align="center"><b>Calender</b></td>
+  </tr>
+  <tr>
+    <td><img width="420"  alt="image" src="https://github.com/user-attachments/assets/afa9979a-83ae-40d8-b71b-9a56b7febc1e" /></td>
+    <td><img width="420"  alt="image" src="https://github.com/user-attachments/assets/359267a7-7ed2-4094-bf3d-ef30d7233267"  /></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Progress</b></td>
+    <td align="center"><b>Reports</b></td>
+  </tr>
+  <tr>
+    <td><img width="420"  alt="image" src="https://github.com/user-attachments/assets/c5ff1ef3-aefc-40ff-9add-8365d7124c5b" /></td>
+    <td><img width="420"  alt="image" src="https://github.com/user-attachments/assets/434e95ab-dad7-4725-966c-a79ced96310f" />
+
+</td>
+  </tr>
+</table>
+
+---
+
+
 ## 🛠 Tech Stack
 
 ### Backend
