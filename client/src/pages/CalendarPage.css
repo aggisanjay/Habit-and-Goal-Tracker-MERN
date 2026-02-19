@@ -1,0 +1,182 @@
+.calendar-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 20px;
+  align-items: start;
+}
+
+.calendar-main { }
+
+.cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cal-month-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cal-day-header {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 8px 4px;
+}
+
+.cal-cell {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+  gap: 2px;
+}
+
+.cal-cell.empty { cursor: default; }
+
+.cal-cell:not(.empty):hover {
+  border-color: var(--amber);
+  transform: scale(1.05);
+}
+
+.cal-cell.today { border-color: var(--amber) !important; }
+
+.cal-cell.selected {
+  border-color: var(--amber) !important;
+  box-shadow: 0 0 0 2px var(--amber-glow);
+}
+
+/* Intensity levels */
+.cal-cell.intensity-0:not(.empty) {
+  background: var(--bg-card);
+}
+
+.cal-cell.intensity-1 {
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.cal-cell.intensity-2 {
+  background: rgba(245, 158, 11, 0.28);
+}
+
+.cal-cell.intensity-3 {
+  background: rgba(245, 158, 11, 0.5);
+}
+
+.cal-cell.intensity-4 {
+  background: var(--amber);
+}
+
+.cal-cell.intensity-4 .cal-day-num {
+  color: #000;
+  font-weight: 800;
+}
+
+.cal-day-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.cal-completion {
+  font-size: 9px;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.cal-cell.intensity-4 .cal-completion { color: rgba(0,0,0,0.6); }
+
+.cal-legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  justify-content: flex-end;
+}
+
+.legend-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.legend-dot.intensity-0 { background: var(--bg-card); border: 1px solid var(--border); }
+.legend-dot.intensity-1 { background: rgba(245, 158, 11, 0.15); }
+.legend-dot.intensity-2 { background: rgba(245, 158, 11, 0.35); }
+.legend-dot.intensity-3 { background: rgba(245, 158, 11, 0.55); }
+.legend-dot.intensity-4 { background: var(--amber); }
+
+/* Calendar side */
+.calendar-side { display: flex; flex-direction: column; gap: 14px; }
+
+.month-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+.month-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 6px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  gap: 3px;
+}
+
+.month-stat-val {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.month-stat-lbl {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.cal-habit-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+  .calendar-layout { grid-template-columns: 1fr; }
+  .calendar-side { order: -1; }
+  .month-stats { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 500px) {
+  .cal-day-num { font-size: 12px; }
+  .cal-cell { border-radius: 6px; }
+}
