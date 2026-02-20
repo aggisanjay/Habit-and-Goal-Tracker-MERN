@@ -193,21 +193,36 @@ export default function HabitsPage() {
   const [showModal, setShowModal] = useState(false);
   const [editHabit, setEditHabit] = useState(null);
 
-  const load = useCallback(async () => {
-    setLoading(true);
+  const load = useCallback(async (showSpinner = false) => {
+    if (showSpinner) setLoading(true);
     try {
       const res = await habitsAPI.getAll();
       setHabits(res.habits || []);
     } finally { setLoading(false); }
   }, []);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => { load(true); }, [load]);
 
   const filtered = filter === 'all' ? habits : habits.filter(h => h.category === filter);
 
   const handleToggle = async (id) => {
-    await habitsAPI.complete(id, {});
-    load();
+    const today = new Date().toISOString().split('T')[0];
+    // Optimistic update — flip completion instantly, no spinner
+    setHabits(prev => prev.map(h => {
+      if (h._id !== id) return h;
+      const alreadyDone = (h.completions || []).some(c => c.date === today);
+      const completions = alreadyDone
+        ? h.completions.filter(c => c.date !== today)
+        : [...(h.completions || []), { date: today }];
+      return { ...h, completions };
+    }));
+    try {
+      await habitsAPI.complete(id, {});
+      load(false); // silent background sync to get updated streaks from server
+    } catch (err) {
+      console.error('Toggle error:', err);
+      load(false); // revert by re-fetching on failure
+    }
   };
 
   const handleEdit = (h) => { setEditHabit(h); setShowModal(true); };
